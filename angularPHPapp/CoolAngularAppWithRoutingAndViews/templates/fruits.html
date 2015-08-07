@@ -1,0 +1,36 @@
+
+<h2> Fruits Calories and Carbohydrates: </h2>
+
+Hello {{ username }}!
+
+<ul> 
+  
+  <li>
+       
+	   <input type="checkbox" id="box1" data-ng-click="apple()" />
+
+       <label for="box1"><img src="apple.jpg" width="200" height="200" /></label>
+	   
+	</li>
+
+   <li>
+
+       <input type="checkbox" id="box2" data-ng-click="banana()" />
+
+       <label for="box2"><img src="bananas.jpg" width="200" height="200" /></label>
+	   
+	</li>
+
+   <li>
+   
+       <input type="checkbox" id="box3" data-ng-click="orange()" />
+
+       <label for="box3"><img src="orange.jpg" width="200" height="200" /></label>
+	   
+	</li>
+	
+</ul>
+
+<button data-ng-click="getTotal()" ng-disabled="noClick">Get Cal/Carb Total</button><Br /><br />
+
+{{ totalData }}

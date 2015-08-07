@@ -1,0 +1,26 @@
+{
+ "BetterMan":{
+	"BetterMan1":{
+		 "name":"Marcus",
+		 "alias":"MarDom",
+		 "age":"26",
+		 "goal":"To be able to love and trust women. To find my 1 and only!",
+		 "Problems":{
+		 "mainProblem":"Anger/Jealousy issues with women.",	 
+		 "secondaryProblem":"Sexual impotency lack of confidence.",
+		 "tertiaryProblem":"Lack of drive to meet new women."
+		 }
+	 },
+	 "BetterMan2":{
+		 "name":"Paul",
+		 "alias":"PowPow",
+		 "age":"30",
+		 "goal":"Get AZZ!",
+		 "Problems":{
+		 "mainProblem":"",	 
+		 "secondaryProblem":"",
+		 "tertiaryProblem":""
+		 }
+	  }
+	}
+}

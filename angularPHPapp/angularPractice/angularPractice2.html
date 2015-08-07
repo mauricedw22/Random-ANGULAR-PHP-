@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+</head>
+<body data-ng-app="app2">
+
+  <div data-ng-controller="shoeCTRL">
+  
+   <p>Jordan Olympic 7's <button data-ng-click="jordans()">Buy These</button><span data-ng-model="bought1">{{ bought1 }}</span></p>
+
+   <p>Air Uptempo Maxs <button data-ng-click="uptempos()">Buy These</button><span data-ng-model="bought2">{{ bought2 }}</span></p>
+
+   <p>Air Max More Uptempos <button data-ng-click="moreUptempos()">Buy These</button><span data-ng-model="bought3">{{ bought3 }}</span></p>
+
+   <p>Air Max 90s <button data-ng-click="max90s()">Buy These</button><span data-ng-model="bought4">{{ bought4 }}</span></p>
+   
+   <p><button data-ng-click="getTotal()">Get Total Price</button> <Br /> {{ totalPrice }}</p>
+ 
+   <div>
+ 
+     <input data-ng-model="numberInput" type="text" size="7">
+	
+	 <br /><Br />
+	
+	{{ numberInput | myFilter }}
+ 
+   </div>
+  
+  </div>
+
+<script>
+
+var app = angular.module('app2',[]);
+
+/* app.filter('myFilter', function(){
+  
+    return function(num){
+		
+		var output;
+		
+		if(!num){
+			
+			output = 'Type something!';	
+			
+			
+		}else if(!isNaN(num)){
+			
+			output = 'You decided to type numbers!';
+			
+		}else if(isNaN(num)){
+		
+            output = 'You are typing letters and chars!';	
+			
+		}
+		
+		return output;
+		
+	}  
+  
+  }); */
+ 
+app.controller('shoeCTRL', function($scope, $timeout){
+
+  $scope.total = [];
+  
+  $scope.totalPrice = 0;
+  
+  function alertMyPrice(){
+  
+    alert('You have bought ' + $scope.totalPrice + ' worth of shoes!!!');
+  
+  };
+  
+  $scope.jordans = function(){
+  
+    $scope.price = 450;
+	
+	$scope.total.push($scope.price);
+	
+	$scope.bought1 = "Bought these!";
+  
+  };  
+  
+  $scope.uptempos = function(){
+  
+    $scope.price = 200;
+	
+    $scope.total.push($scope.price);
+	
+	$scope.bought2 = "Bought these!";
+  
+  };
+  
+  $scope.moreUptempos = function(){
+  
+    $scope.price = 500;
+	
+	$scope.total.push($scope.price);
+	
+	$scope.bought3 = "Bought these!";
+  
+  };
+  
+  $scope.max90s = function(){
+  
+    $scope.price = 180;
+	
+	$scope.total.push($scope.price);
+	
+	$scope.bought4 = "Bought these!";
+  
+  };
+  
+  $scope.getTotal = function(){
+  
+    for (var i=0;i<$scope.total.length;i++) {
+	
+      $scope.totalPrice = $scope.totalPrice + $scope.total[i];
+	  
+	  $timeout(alertMyPrice, 5000);
+	  
+     }
+  
+  };
+
+});
+
+</script>
+
+<script src="filters.js"></script>
+
+</body>
+</html>

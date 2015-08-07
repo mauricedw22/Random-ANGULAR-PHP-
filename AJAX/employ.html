@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+
+<script>
+
+function getEmployees(){
+var xmlhttp;
+
+if(window.XMLHttpRequest){
+ 
+ xmlhttp = new XMLHttpRequest();
+
+}else{
+ 
+ xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+}
+
+xmlhttp.onreadystatechange = function(){
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+     var x = xmlhttp.responseText;
+     //var x = JSON.stringify(xmlhttp.responseText);
+	 document.getElementById("test").innerHTML = x;
+	 //WHEN JSON IS SURROUNDED BY (....) - var data = eval(x);
+	 var data = eval('(' + x + ')');
+	 //USE ABOVE CODE instead of - var data = JSON.parse(x);
+	 document.getElementById("mainDiv").innerHTML = data.employees[0].firstName + " & " + data.employees[1].firstName + " are my employees!";
+   }
+ }
+
+xmlhttp.open("GET","employ.json",true);
+xmlhttp.send();
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+
+<h2>Trying out JSON with Javascript - morphing external JSON data into Javascript Object Literals for data extraction! </h2>
+
+<button onclick="getEmployees()">Get Employees</button>
+
+<div id="test"></div>
+
+<div id="mainDiv"></div>
+
+</body>
+</html>

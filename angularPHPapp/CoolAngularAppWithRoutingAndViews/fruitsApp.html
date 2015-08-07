@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.2.1/angular-route.min.js"></script>
+
+<script src="routePlusFruitsCTRL.js"></script>
+<script src="moduleMyApp.js"></script>
+
+<style>
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+input[type="checkbox"][id^="box"] {
+  display: none;
+}
+
+label {
+  border: 2px outset navy;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+label img {
+  height: 200px;
+  width: 200px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label {
+  border-color: red;
+}
+
+:checked + label:before {
+  content: "!";
+  background-color: red;
+  transform: scale(1);
+}
+
+:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}
+
+
+</style>
+
+</head>
+
+<body data-ng-app="myApp">
+
+<p> Username: <input data-ng-model="username" type="text" size="20" required></p>
+
+<p> Email: <input data-ng-model="userEmail" type="text" size="20"></p>
+
+<ul>
+
+    <li>
+  
+      <a href="#default">Default</a>
+
+	</li>
+	
+	<li>
+	
+	  <a href="#fruits{{ username }}">Count Cals & Carbs</a>
+	
+	</li>
+	
+	<li>
+	
+	  <a href="#view1">View #1</a>
+	
+	</li>
+	
+	<li>
+	
+	  <a href="#view2">View #2</a>
+	
+	</li>
+	
+</ul>
+
+<div data-ng-view></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.2.1/angular-route.min.js"></script>
+
+<script src="moduleMyApp.js"></script>
+<script src="routePlusFruitsCTRL.js"></script>
+
+<!-- <script>
+var app = angular.module('myApp',['ngRoute']);
+
+app.config(function($routeProvider){
+	
+	$routeProvider.when('/default',{
+		templateUrl: 'templates/default.html',
+		controller: 'defaultCTRL'		
+	}).when('/fruits',{
+		templateUrl: 'templates/fruits.html',
+		controller: 'fruitsCTRL'		
+	}).otherwise({ redirectTo: '/default'});	
+	
+});
+
+app.controller('defaultCTRL', function($scope){
+	
+	$scope.x = 'Hello World';
+	
+	$scope.message = 'This is the default controller and default view!!!';
+	
+	
+});
+
+app.controller('fruitsCTRL',function($scope){
+  
+  $scope.fruitsCalsTotal = [];
+  
+  $scope.fruitsCarbsTotal = [];
+  
+  $scope.totalCals = 0;
+  
+  $scope.totalCarbs = 0;
+  
+  $scope.totalData = "";
+  
+  $scope.apple = function(){
+  
+    $scope.appleCals = 95;
+	$scope.appleCarbs = 25;
+	
+	$scope.fruitsCalsTotal.push($scope.appleCals);
+	$scope.fruitsCarbsTotal.push($scope.appleCarbs);
+  
+  };
+  
+  $scope.banana = function(){
+    
+	$scope.bananaCals = 105;
+	$scope.bananaCarbs = 27;
+	
+	$scope.fruitsCalsTotal.push($scope.bananaCals);
+	$scope.fruitsCarbsTotal.push($scope.bananaCarbs);
+  
+  };
+  
+  $scope.orange = function(){
+  
+    $scope.orangeCals = 45;
+	$scope.orangeCarbs = 11;
+	
+	$scope.fruitsCalsTotal.push($scope.orangeCals);
+	$scope.fruitsCarbsTotal.push($scope.orangeCarbs);
+  
+  };
+  
+  $scope.getTotal = function(){
+    
+	for(var i=0;i<$scope.fruitsCalsTotal.length;i++){
+	 
+	   $scope.totalCals += $scope.fruitsCalsTotal[i];
+	   
+	   $scope.totalCarbs += $scope.fruitsCarbsTotal[i];
+	 
+	 }
+	 
+	  $scope.totalData = "Total Calories are " + $scope.totalCals + " and total carbs are " + $scope.totalCarbs;
+  
+  };
+
+});  
+
+</script> -->
+
+</body>
+
+</html>

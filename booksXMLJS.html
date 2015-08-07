@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- <script src="loadXMLDoc.js"></script> -->
+<script>
+
+function loadXMLDoc(filename)
+{
+if (window.XMLHttpRequest)
+  {
+  xhttp=new XMLHttpRequest();
+  }
+else // code for IE5 and IE6
+  {
+  xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xhttp.open("GET",filename,false);
+xhttp.send();
+return xhttp.responseXML;
+} 
+</script>
+
+</head>
+<body>
+
+<script>
+xmlDoc=loadXMLDoc("books.xml");
+
+/* newBook=xmlDoc.createElement("Paradise Lost");
+
+x=xmlDoc.getElementsByTagName("book")[0];
+x.appendChild(newel);
+
+document.write(x.getElementsByTagName("Paradise Lost")[0].nodeName);
+
+newell=xmlDoc.createElement("Flowers For Algernon");
+
+x=xmlDoc.getElementsByTagName("book")[0];
+x.appendChild(newell);
+
+document.write('<br />' + x.getElementsByTagName("Flowers For Algernon")[0].nodeName); */
+
+for(var i=0;i<xmlDoc.getElementsByTagName('book').length;i++){
+
+  document.write('<br />' + xmlDoc.getElementsByTagName('title')[i].childNodes[0].nodeValue);
+
+}
+</script>
+</body>
+</html>

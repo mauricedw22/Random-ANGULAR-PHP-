@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#button1").click(function(){
+        $("#div1").load("ajaxJqueryText.txt", function(responseTxt, statusTxt, xhr){
+            if(statusTxt == "success")
+                alert("External content loaded successfully!");
+            if(statusTxt == "error")
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+        });
+    });
+	
+	$("#button2").click(function(){
+        $.post("ajaxJquery.php",
+        {
+          name: "Maurice W",
+          city: "Bowie"
+        },
+        function(data,status){
+            //alert("Data: " + data + "\nStatus: " + status);
+			$("#data").text(data);
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button id="button1">Get 1st Content</button>
+<button id="button2">Get 2nd Content</button>
+
+<p style="text-align:center;" id="data"></p>
+
+</body>
+</html>
